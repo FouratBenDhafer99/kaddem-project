@@ -9,6 +9,15 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import {NgbCollapseModule, NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {HttpClientModule} from "@angular/common/http";
+import { AddUniversiteComponent } from './add-universite/add-universite.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { DepartementListComponent } from './departement-list/departement-list.component';
+import { AddDepartementComponent } from './add-departement/add-departement.component';
+import { EditDepartementComponent } from './edit-departement/edit-departement.component';
+import { EquipeListComponent } from './equipe-list/equipe-list.component';
+import { AddEquipeComponent } from './add-equipe/add-equipe.component';
+import { EditEquipeComponent } from './edit-equipe/edit-equipe.component';
 
 @NgModule({
   declarations: [
@@ -17,14 +26,24 @@ import {NgbCollapseModule, NgbModule} from "@ng-bootstrap/ng-bootstrap";
     HomeComponent,
     SideBarComponent,
     NavbarComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    AddUniversiteComponent,
+    DepartementListComponent,
+    AddDepartementComponent,
+    EditDepartementComponent,
+    EquipeListComponent,
+    AddEquipeComponent,
+    EditEquipeComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        NgbCollapseModule,
-        NgbModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbCollapseModule,
+    NgbModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -16,29 +16,29 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
   {
-    path: "/icons",
-    title: "Icons",
+    path: "/university/list",
+    title: "Universities",
     rtlTitle: "الرموز",
-    icon: "icon-atom",
+    icon: "icon-bank",
     class: ""
   },
   {
-    path: "/maps",
-    title: "Maps",
+    path: "/department/list",
+    title: "Department",
     rtlTitle: "خرائط",
-    icon: "icon-pin",
+    icon: "icon-vector",
     class: "" },
   {
-    path: "/notifications",
-    title: "Notifications",
+    path: "/team/list",
+    title: "Teams",
     rtlTitle: "إخطارات",
-    icon: "icon-bell-55",
+    icon: "icon-badge",
     class: ""
   },
 
   {
-    path: "/user",
-    title: "User Profile",
+    path: "/student",
+    title: "Students",
     rtlTitle: "ملف تعريفي للمستخدم",
     icon: "icon-single-02",
     class: ""
