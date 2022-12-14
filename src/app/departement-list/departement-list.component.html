@@ -27,7 +27,6 @@
               <tr>
                 <th>Name</th>
                 <th>University</th>
-                <th></th>
               </tr>
               </thead>
               <tbody>
@@ -39,7 +38,6 @@
                   <span>{{dep.universite.nom}}</span>
                   <span [hidden]="!isEdit[i]"><app-edit-departement [parentDep]="dep"  (editedEvent)="isEdit[i]=$event" (depEvent)="updateDepFromChild(i,$event)"></app-edit-departement></span>
                 </td>
-                <td class="actionCol"><i class="tim-icons icon-trash-simple text-danger-states"></i></td>
               </tr>
               </tbody>
 

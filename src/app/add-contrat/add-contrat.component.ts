@@ -5,6 +5,8 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
 import {Specialite} from "../enums/Specialite";
 import {Contrat} from "../models/Contrat";
+import {EtudiantService} from "../services/EtudiantService";
+import {Etudiant} from "../models/Etudiant";
 
 @Component({
   selector: 'app-add-contrat',
@@ -17,34 +19,33 @@ export class AddContratComponent implements OnInit {
     private router: Router,
     private contratService: ContratService,
     private fb: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private etService: EtudiantService
   ) { }
-
-/*
-  contratForm= this.fb.group({
-    dateDebutContrat: ['', Validators.required],
-    dateFinContrat: ['',  Validators.compose([Validators.required])],
-    specialite: [Specialite.IA, Validators.required],
-    archive: [false, Validators.required],
-    montantContrat: [0, Validators.compose([Validators.required,Validators.min(10)])],
-  })
- */
 
   dateDeb= {year:0, month:0, day:0}
   dateFin= {year:0, month:0, day:0}
 
-  contract: Contrat= new Contrat(0, new Date(), new Date(), Specialite.IA, false, 0)
+  // @ts-ignore
+  contract: Contrat= new Contrat(0, new Date(), new Date(), Specialite.IA, false, 0,new Etudiant(0))
 
   specialties= Object.values(Specialite)
-
+  students: Etudiant[]= []
 
   ngOnInit(): void {
+    this.loadData()
   }
 
+  loadData(){
+    this.etService.getData().subscribe((res:any)=> {
+      this.students = res
+    })
+  }
 
   addContrat(){
     this.contract.dateDebutContrat= new Date(this.dateDeb.year,this.dateDeb.month,this.dateDeb.day)
     this.contract.dateFinContrat= new Date(this.dateFin.year,this.dateFin.month,this.dateFin.day)
+    console.log(this.contract)
     this.contratService.addContrat(this.contract)
       .subscribe(res=>{
         this.showNotification()

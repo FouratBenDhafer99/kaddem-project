@@ -13,6 +13,7 @@ export class ContratService{
   private addUrl: string= "add"
   private oneByIdUrl: string= "get"
   private editUrl: string= "update"
+  private deleteUrl: string= "remove/"
 
   httpOptions = { headers: new HttpHeaders({
       'Content-Type': 'application/json'})}
@@ -37,5 +38,8 @@ export class ContratService{
     return this.httpClient.put<Contrat>(this.apiUrl+this.editUrl, contrat, this.httpOptions)
   }
 
+  deleteContrat(id: number):Observable<Contrat>{
+    return this.httpClient.delete<Contrat>(this.apiUrl+this.deleteUrl+id);
+  }
 
 }

@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h1>Create a contract</h1>
+          <h1>Edit a contract</h1>
         </div>
 
         <div class=" card-body">
@@ -59,9 +59,9 @@
             <div class=" row">
               <div class=" col-md-6 ">
                 <div class=" form-group">
-                  <label for="specialite"> Level </label>
+                  <label for="specialite"> Specialty </label>
                   <select id="specialite" class="form-control" name= "specialite"[(ngModel)]="contract.specialite">
-                    <option [ngStyle]="{'color': 'black'}" *ngFor="let specialty of specialties">{{specialty}}</option>
+                    <option [ngStyle]="{'color': 'black'}" value="{{specialty}}" *ngFor="let specialty of specialties">{{specialty}}</option>
                   </select>
                 </div>
               </div>
@@ -74,6 +74,17 @@
                   <input type="number" class="form-control"
                          min="10" name="montant"
                          [(ngModel)]="contract.montantContrat" required>
+                </div>
+              </div>
+            </div>
+
+            <div class=" row">
+              <div class=" col-md-6 ">
+                <div class=" form-group">
+                  <label for="student"> Student </label>
+                  <select id="student" class="form-control" name= "student"[(ngModel)]="contract.etudiant.idEtudiant">
+                    <option [ngStyle]="{'color': 'black'}" value="{{student.idEtudiant}}" *ngFor="let student of students">{{student.prenom}} {{student.nom}} - {{student.departement.universite.nom}}</option>
+                  </select>
                 </div>
               </div>
             </div>

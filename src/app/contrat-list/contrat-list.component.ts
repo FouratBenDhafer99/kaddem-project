@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Contrat} from "../models/Contrat";
 import {ContratService} from "../services/ContratService";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-contrat-list',
@@ -12,7 +13,8 @@ export class ContratListComponent implements OnInit {
 
   constructor(
     private contratService: ContratService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   contracts: Contrat[]= []
@@ -29,5 +31,21 @@ export class ContratListComponent implements OnInit {
 
   toEdit(contract: Contrat){
     this.router.navigate(['/contract/edit', contract.idContrat])
+  }
+
+  deleteContrat(id: number){
+    this.contratService.deleteContrat(id).subscribe(
+      res=>{
+        this.showNotification()
+        setTimeout(()=>window.location.reload(), 3000)
+
+      }
+    )
+
+  }
+
+  showNotification(){
+    this.toastr.warning("<span class='tim-icons icon-simple-add' [data-notify]='icon'></span><b>Contract</b> has been added!",
+      "Success", {})
   }
 }
