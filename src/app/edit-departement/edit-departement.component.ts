@@ -4,6 +4,7 @@ import {Universite} from "../models/Universite";
 import {UniversiteService} from "../services/UniversiteService";
 import {Router} from "@angular/router";
 import {DepartementService} from "../services/DepartementService";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-edit-departement',
@@ -13,9 +14,10 @@ import {DepartementService} from "../services/DepartementService";
 export class EditDepartementComponent implements OnInit{
 
   constructor(
-    public uniService: UniversiteService,
-    public depService: DepartementService,
-    public router: Router,
+    private uniService: UniversiteService,
+    private depService: DepartementService,
+    private router: Router,
+    private toastr: ToastrService
     ) { }
 
   @Input() parentDep!: Departement;
@@ -48,11 +50,18 @@ export class EditDepartementComponent implements OnInit{
           this.uniService.assignUniToDep(this.dep.universite.idUniv, res.idDepart)
             .subscribe(res=> {
               this.parentDep= this.dep
+              this.showNotification()
               this.depEvent.emit(this.parentDep)
               this.editedEvent.emit(false)
             })
         }
       )
+  }
+
+  showNotification(){
+    this.toastr.info("<span class='tim-icons icon-check-2' [data-notify]='icon'></span><b>" + this.dep.nomDepart+
+      "</b> has been updated!",
+      "Success", {})
   }
 
 }

@@ -16,3 +16,17 @@
 .ng-valid[required], .ng-valid.required  {
   border-left: 5px solid #42A948; /* green */
 }
+
+.toast-container{
+  position: fixed;
+  pointer-events: none;
+  z-index: 999999;
+}
+
+.dropdown-menu .ngb-dp-weekdays, .dropdown-menu .btn-light, .dropdown-menu .ngb-dp-header{
+  background: linear-gradient(#e66465, #f5365c);
+}
+
+.dropdown-menu .ngb-dp-weekday{
+  color: white;
+}

@@ -9,6 +9,9 @@ import {EditDepartementComponent} from "./edit-departement/edit-departement.comp
 import {EquipeListComponent} from "./equipe-list/equipe-list.component";
 import {AddEquipeComponent} from "./add-equipe/add-equipe.component";
 import {EditEquipeComponent} from "./edit-equipe/edit-equipe.component";
+import {ContratListComponent} from "./contrat-list/contrat-list.component";
+import {AddContratComponent} from "./add-contrat/add-contrat.component";
+import {EditContratComponent} from "./edit-contrat/edit-contrat.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent},
@@ -27,6 +30,12 @@ const routes: Routes = [
       {path: 'list',  component: EquipeListComponent,},
       {path: 'add',  component: AddEquipeComponent,},
       {path: 'edit/:idEq',  component: EditEquipeComponent,},
+    ]   },
+  { path: "contract",
+    children:[
+      {path: 'list',  component: ContratListComponent,},
+      {path: 'add',  component: AddContratComponent,},
+      {path: 'edit/:idC',  component: EditContratComponent,},
     ]   },
   { path: '**', component: HomeComponent }
 ];

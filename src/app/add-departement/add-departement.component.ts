@@ -4,6 +4,7 @@ import {Universite} from "../models/Universite";
 import {UniversiteService} from "../services/UniversiteService";
 import {DepartementService} from "../services/DepartementService";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-add-departement',
@@ -15,7 +16,8 @@ export class AddDepartementComponent implements OnInit {
   constructor(
     private uniService: UniversiteService,
     private depService: DepartementService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   // @ts-ignore
@@ -39,8 +41,18 @@ export class AddDepartementComponent implements OnInit {
       .subscribe(res=> {
 
           this.uniService.assignUniToDep(this.dep.universite.idUniv, res.idDepart)
-            .subscribe(res=> this.router.navigate(['/department/list']))
+            .subscribe(res=> {
+              this.showNotification()
+              this.router.navigate(['/department/list'])
+            })
         }
       )
   }
+
+  showNotification(){
+    this.toastr.info("<span class='tim-icons icon-simple-add' [data-notify]='icon'></span><b>" + this.dep.nomDepart+
+      "</b> has been added!",
+      "Success", {})
+  }
+
 }

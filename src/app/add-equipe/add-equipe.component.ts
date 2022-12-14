@@ -5,6 +5,7 @@ import {Niveau} from "../enums/Niveau";
 import {EquipeService} from "../services/EquipeService";
 import {DetailsEquipe} from "../models/DetailsEquipe";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-add-equipe',
@@ -16,7 +17,8 @@ export class AddEquipeComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private eqService: EquipeService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {
 
 
@@ -56,9 +58,16 @@ export class AddEquipeComponent implements OnInit {
   addEquipe():void{
     this.team= new Equipe(0,this.teamForm.value.nomEquipe, this.teamForm.value.niveau,
       new DetailsEquipe(0, this.teamForm.value.detailEquipe.salle, this.teamForm.value.detailEquipe.thematique))
-    this.eqService.addEquipe(this.team).subscribe(res=>
+    this.eqService.addEquipe(this.team).subscribe(res=> {
+      this.showNotification()
       this.router.navigate(['team/list'])
-    )
+    })
+  }
+
+  showNotification(){
+    this.toastr.info("<span class='tim-icons icon-simple-add' [data-notify]='icon'></span><b>" + this.teamForm.value.nomEquipe+
+      "</b> has been added!",
+      "Success", {})
   }
 
 }

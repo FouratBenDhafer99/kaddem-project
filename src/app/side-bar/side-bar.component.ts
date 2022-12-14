@@ -44,10 +44,10 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
   {
-    path: "/tables",
-    title: "Table List",
+    path: "/contract/list",
+    title: "Contracts",
     rtlTitle: "قائمة الجدول",
-    icon: "icon-puzzle-10",
+    icon: "icon-paper",
     class: ""
   },
   {
