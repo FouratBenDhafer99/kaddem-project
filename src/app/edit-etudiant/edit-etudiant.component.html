@@ -54,8 +54,8 @@
               <div class=" col-md-6 ">
                 <div class=" form-group">
                   <label for="department"> Department </label>
-                  <select id="department" class="form-control" name="department" [(ngModel)]="student.departement">
-                    <option [ngStyle]="{'color': 'black'}" *ngFor="let department of departments" value="{{department}}">{{department.nomDepart}}</option>
+                  <select id="department" class="form-control" name="department" [(ngModel)]="student.departement.idDepart">
+                    <option [ngStyle]="{'color': 'black'}" *ngFor="let department of departments" value="{{department.idDepart}}">{{department.nomDepart}}</option>
                   </select>
                 </div>
               </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UniversiteService} from "../services/UniversiteService";
 import {Universite} from "../models/Universite";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Departement} from "../models/Departement";
 
 @Component({
   selector: 'app-universite-list',
@@ -32,14 +33,15 @@ export class UniversiteListComponent implements OnInit {
         this.universities = res
         this.isEdit= new Array<boolean>(res.length)
         this.isEdit.fill(false)
-
-        console.log(this.isEdit)
       })
   }
 
   setEdit(pos: number){
-    this.isEdit[pos]= true
-    console.log(this.isEdit)
+    this.isEdit[pos]= !this.isEdit[pos]
+  }
+
+  updateUniFromChild(pos: number, newUni: Universite){
+    this.universities[pos]= newUni
   }
 
 }

@@ -29,9 +29,8 @@ export class EditEtudiantComponent implements OnInit {
     private toastr: ToastrService
   ) { }
 
-
   // @ts-ignore
-  student: Etudiant= new Etudiant()
+  student: Etudiant= new Etudiant(0, "", "", "", new Departement(0))
   studentEquipes: Equipe[]=[]
 
   options= Object.values(Option).filter(value=> typeof value!=='number')

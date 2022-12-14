@@ -29,11 +29,12 @@
                 <th>Speciality</th>
                 <th>Start date</th>
                 <th>Start end</th>
+                <th>Archived</th>
                 <th></th>
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let contract of contracts" class="hoverTd" (dblclick)="toEdit(contract)">
+              <tr *ngFor="let contract of contracts, let i= index" class="hoverTd" (dblclick)="toEdit(contract)">
                 <td>
                   <span>{{contract.etudiant.prenom}} {{contract.etudiant.prenom}}</span>
                 </td>
@@ -45,6 +46,9 @@
                 </td>
                 <td>
                   <span>{{contract.dateFinContrat}}</span>
+                </td>
+                <td>
+                  <span><app-archive-contrat [parentContrat]="contract" (contrtEvent)="updateDepFromChild(i, $event)"></app-archive-contrat></span>
                 </td>
                 <td class="actionCol" (click)="deleteContrat(contract.idContrat)"><i class="tim-icons icon-trash-simple text-danger-states pointer"></i></td>
               </tr>

@@ -7,7 +7,7 @@
         <div class="card-header">
           <div class="row">
             <div class="col-sm-6 text-left">
-              <h1>Universites:</h1>
+              <h1>Universites</h1>
             </div>
             <div class="col-sm-6">
               <div class="float-right mr-4">
@@ -26,29 +26,16 @@
               <thead class="text-primary">
                 <tr>
                   <th>Name</th>
-                  <th></th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let uni of universities; let i= index " class="hoverTd">
+                <tr *ngFor="let uni of universities; let i= index " class="hoverTd" (dblclick)="setEdit(i)">
                   <td>
-                    <span [hidden]="!isEdit[i]" class="col-md-6 pr-md-1">
-                      <input
-                        class="form-control"
-                        placeholder="Name"
-                        type="text"
-
-                        name="nom"
-                        [(ngModel)]="uni.nom"
-
-                        autofocus
-                        required
-                        [minlength]="3"
-                      /> <button >Save</button></span>
-                    <span [hidden]="isEdit[i+1]" (dblclick)="setEdit(i)">{{uni.nom}}</span>
-
+                    <span [hidden]="isEdit[i]" >{{uni.nom}}</span>
+                    <span [hidden]="!isEdit[i]">
+                      <app-edit-university [parentUni]="uni"  (editedEvent)="isEdit[i]=$event" (uniEvent)="updateUniFromChild(i,$event)"></app-edit-university>
+                    </span>
                   </td>
-                  <td class="actionCol"><i class="tim-icons icon-trash-simple text-danger-states"></i></td>
                 </tr>
               </tbody>
 

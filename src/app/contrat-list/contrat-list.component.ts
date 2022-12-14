@@ -3,6 +3,7 @@ import {Contrat} from "../models/Contrat";
 import {ContratService} from "../services/ContratService";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
+import {Departement} from "../models/Departement";
 
 @Component({
   selector: 'app-contrat-list',
@@ -42,6 +43,11 @@ export class ContratListComponent implements OnInit {
       }
     )
 
+  }
+
+  index: number=0
+  updateDepFromChild(pos: number, newC: Contrat){
+    this.contracts[pos]= newC
   }
 
   showNotification(){

@@ -11,6 +11,7 @@ export class UniversiteService{
   private getAllUrl: string= "all"
   private addUrl: string= "add"
   private assignUrl: string= "assign/"
+  private editUrl: string= "update"
 
   httpOptions = { headers: new HttpHeaders({
       'Content-Type': 'application/json'})}
@@ -25,6 +26,10 @@ export class UniversiteService{
 
   addUiversite(uni: Universite):Observable<Universite>{
     return this.httpClient.post<Universite>(this.apiUrl+this.addUrl, uni, this.httpOptions)
+  }
+
+  editUiversite(uni: Universite):Observable<Universite>{
+    return this.httpClient.put<Universite>(this.apiUrl+this.editUrl, uni, this.httpOptions)
   }
 
   assignUniToDep(uniId: number, depId: number):Observable<Universite>{

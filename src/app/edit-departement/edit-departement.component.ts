@@ -2,7 +2,6 @@ import {Component, Input, OnChanges, OnInit, Output, SimpleChanges, EventEmitter
 import {Departement} from "../models/Departement";
 import {Universite} from "../models/Universite";
 import {UniversiteService} from "../services/UniversiteService";
-import {Router} from "@angular/router";
 import {DepartementService} from "../services/DepartementService";
 import {ToastrService} from "ngx-toastr";
 
@@ -16,7 +15,6 @@ export class EditDepartementComponent implements OnInit{
   constructor(
     private uniService: UniversiteService,
     private depService: DepartementService,
-    private router: Router,
     private toastr: ToastrService
     ) { }
 
@@ -59,7 +57,7 @@ export class EditDepartementComponent implements OnInit{
   }
 
   showNotification(){
-    this.toastr.info("<span class='tim-icons icon-check-2' [data-notify]='icon'></span><b>" + this.dep.nomDepart+
+    this.toastr.success("<span class='tim-icons icon-check-2' [data-notify]='icon'></span><b>" + this.dep.nomDepart+
       "</b> has been updated!",
       "Success", {})
   }

@@ -26,6 +26,8 @@ import { EditContratComponent } from './edit-contrat/edit-contrat.component';
 import { EtudiantListComponent } from './etudiant-list/etudiant-list.component';
 import { AddEtudiantComponent } from './add-etudiant/add-etudiant.component';
 import { EditEtudiantComponent } from './edit-etudiant/edit-etudiant.component';
+import { EditUniversityComponent } from './edit-university/edit-university.component';
+import { ArchiveContratComponent } from './archive-contrat/archive-contrat.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { EditEtudiantComponent } from './edit-etudiant/edit-etudiant.component';
     EtudiantListComponent,
     AddEtudiantComponent,
     EditEtudiantComponent,
+    EditUniversityComponent,
+    ArchiveContratComponent,
   ],
   imports: [
     BrowserModule,
