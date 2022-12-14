@@ -23,6 +23,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { ContratListComponent } from './contrat-list/contrat-list.component';
 import { AddContratComponent } from './add-contrat/add-contrat.component';
 import { EditContratComponent } from './edit-contrat/edit-contrat.component';
+import { EtudiantListComponent } from './etudiant-list/etudiant-list.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { EditContratComponent } from './edit-contrat/edit-contrat.component';
     ContratListComponent,
     AddContratComponent,
     EditContratComponent,
+    EtudiantListComponent,
   ],
   imports: [
     BrowserModule,

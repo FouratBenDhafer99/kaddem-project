@@ -12,6 +12,7 @@ import {EditEquipeComponent} from "./edit-equipe/edit-equipe.component";
 import {ContratListComponent} from "./contrat-list/contrat-list.component";
 import {AddContratComponent} from "./add-contrat/add-contrat.component";
 import {EditContratComponent} from "./edit-contrat/edit-contrat.component";
+import {EtudiantListComponent} from "./etudiant-list/etudiant-list.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent},
@@ -34,6 +35,12 @@ const routes: Routes = [
   { path: "contract",
     children:[
       {path: 'list',  component: ContratListComponent,},
+      {path: 'add',  component: AddContratComponent,},
+      {path: 'edit/:idC',  component: EditContratComponent,},
+    ]   },
+  { path: "student",
+    children:[
+      {path: 'list',  component: EtudiantListComponent,},
       {path: 'add',  component: AddContratComponent,},
       {path: 'edit/:idC',  component: EditContratComponent,},
     ]   },

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ContratService} from "../services/ContratService";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Validators} from "@angular/forms";
 import {Contrat} from "../models/Contrat";
 import {Specialite} from "../enums/Specialite";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-edit-contrat',
@@ -14,7 +15,9 @@ export class EditContratComponent implements OnInit {
 
   constructor(
     private contratService: ContratService,
-    private ac: ActivatedRoute
+    private ac: ActivatedRoute,
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
 
@@ -38,22 +41,34 @@ export class EditContratComponent implements OnInit {
         this.contract= res
         this.dateDeb={
           year: new Date(this.contract.dateDebutContrat).getFullYear(),
-          month: new Date(this.contract.dateDebutContrat).getMonth(),
+          month: new Date(this.contract.dateDebutContrat).getMonth()+1,
           day: new Date(this.contract.dateDebutContrat).getDay(),
         }
         this.dateFin={
           year: new Date(this.contract.dateFinContrat).getFullYear(),
-          month: new Date(this.contract.dateFinContrat).getMonth(),
+          month: new Date(this.contract.dateFinContrat).getMonth()+1,
           day: new Date(this.contract.dateFinContrat).getDay(),
         }
-
+        console.log(this.dateDeb)
 
         })
       })
   }
 
   updateContract(){
-    console.log(this.contract)
+    this.contract.dateDebutContrat= new Date(this.dateDeb.year,this.dateDeb.month,this.dateDeb.day)
+    this.contract.dateFinContrat= new Date(this.dateFin.year,this.dateFin.month,this.dateFin.day)
+    this.contratService.editContrat(this.contract)
+      .subscribe(res=>{
+        this.showNotification()
+        this.router.navigate(['/contract/list'])
+      })
+  }
+
+  showNotification(){
+    this.toastr.info("<span class='tim-icons icon-simple-add' [data-notify]='icon'></span><b>" +
+      "</b>The contract has been updated!",
+      "Success", {})
   }
 
 }
