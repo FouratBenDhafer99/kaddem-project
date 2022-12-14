@@ -37,7 +37,7 @@ export const ROUTES: RouteInfo[] = [
   },
 
   {
-    path: "/student",
+    path: "/student/list",
     title: "Students",
     rtlTitle: "ملف تعريفي للمستخدم",
     icon: "icon-single-02",

@@ -7,14 +7,14 @@ export class Etudiant{
   prenom: string;
   nom: string;
   optionEtudiant: Option;
-  department: Departement;
+  departement: Departement;
 
 
-  constructor(idEtudiant: number, prenom: string, nom: string, optionEtudiant: Option, department: Departement) {
+  constructor(idEtudiant: number, prenom: string, nom: string, optionEtudiant: Option, departement: Departement) {
     this.idEtudiant = idEtudiant;
     this.prenom = prenom;
     this.nom = nom;
     this.optionEtudiant = optionEtudiant;
-    this.department = department;
+    this.departement = departement;
   }
 }
